@@ -22,7 +22,7 @@ public class PlayerShoot : MonoBehaviour
     {
         //AUDIO shooting sound
 
-        bulletInstance = Instantiate(bulletPrefab, transform.position, bulletPrefab.transform.rotation);
+        bulletInstance = Instantiate(bulletPrefab, transform.position, transform.rotation);
         bulletInstance.AddComponent<MoveBullet>().speed = bulletSpeed;
         bulletInstance.GetComponent<MoveBullet>().lifetime = bulletLifetime;
     }

@@ -21,7 +21,7 @@ public class MovePlayer : MonoBehaviour
 
     void Update()
     {
-        moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized * moveSpeed * Time.deltaTime;
+        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * moveSpeed * Time.deltaTime;
     }
 
     private void FixedUpdate()
