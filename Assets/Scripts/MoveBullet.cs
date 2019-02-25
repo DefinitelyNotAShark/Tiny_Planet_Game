@@ -9,7 +9,7 @@ public class MoveBullet : MonoBehaviour
 
     private float elapsedTime;
 
-	void FixedUpdate ()
+    void FixedUpdate ()
     {
         elapsedTime += Time.deltaTime;
 

@@ -11,8 +11,8 @@ public class PlayerShoot : MonoBehaviour
     private float bulletSpeed, bulletLifetime;
 
     private GameObject bulletInstance;
-	
-	void Update ()
+
+    void Update ()
     {
         if (Input.GetButtonDown("Shoot"))
             Shoot();
