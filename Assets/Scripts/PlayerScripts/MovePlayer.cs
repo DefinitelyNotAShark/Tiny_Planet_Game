@@ -10,8 +10,8 @@ public class MovePlayer : MonoBehaviour
     [SerializeField]
     private float moveSpeed;
 
-    [HideInInspector]
-    public Vector3 moveDirection;
+
+    private Vector3 moveDirection;
     private Rigidbody rigidbody;
 
     private void Start()
