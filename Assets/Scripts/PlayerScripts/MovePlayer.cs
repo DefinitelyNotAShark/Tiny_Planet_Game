@@ -13,19 +13,33 @@ public class MovePlayer : MonoBehaviour
 
     private Vector3 moveDirection;
     private Rigidbody rigidbody;
+    private Animator anim;
+
+    private float horizontal;
+    private float vertical;
 
     private void Start()
     {
-        rigidbody = GetComponent<Rigidbody>(); ;
+        rigidbody = GetComponent<Rigidbody>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
-        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * moveSpeed * Time.deltaTime;
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
+
+        moveDirection = new Vector3(horizontal, 0, vertical) * moveSpeed * Time.deltaTime;
     }
 
     private void FixedUpdate()
     {
         rigidbody.MovePosition(rigidbody.position + transform.TransformDirection(moveDirection));//move
+
+        if (Mathf.Abs(horizontal) > 0 || Mathf.Abs(vertical) > 0)//if we're pushing move buttons     
+            anim.SetBool("isMoving", true);//then the animator knows we moving
+        
+        else
+            anim.SetBool("isMoving", false);//otherwise we're not moving
     }
 }
