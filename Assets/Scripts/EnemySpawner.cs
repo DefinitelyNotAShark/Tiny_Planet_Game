@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
     private GameObject enemyPrefab;
 
     [SerializeField]
-    private Transform[] spawnPoints;
+    private float planetRadius;
 
     private GameObject objectInstance;
 
@@ -53,41 +53,54 @@ public class EnemySpawner : MonoBehaviour
 
     private void Spawn()
     {
-        objectInstance = Instantiate(enemyPrefab, ChooseARandomSpawnPoint(), transform.localRotation);//spawns our enemy at the position of the spawn point and it's normal rotation 
+        objectInstance = Instantiate(enemyPrefab, GenerateRandomPoint(), transform.localRotation);//spawns our enemy at the position of the spawn point and it's normal rotation 
     }
 
-    public Vector3 RandomNavmeshLocation(float radius)
+    private Vector3 GenerateRandomPoint()
     {
-        NavMeshHit hit;
-        Vector3 randomDirection = Random.insideUnitSphere * radius;
-        Vector3 finalPosition = Vector3.zero;
-
-        randomDirection += transform.position;
-
-        if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1))
+        float x, y, z, d;
+        do
         {
-            finalPosition = hit.position;
-        }
-        return finalPosition;
+            x = Random.Range(-planetRadius, planetRadius);
+            y = Random.Range(-planetRadius, planetRadius);
+            z = Random.Range(-planetRadius, planetRadius);
+            d = x * x + y * y + z * z;
+        } while (d > 1.0);
+        return new Vector3(x, y, z);
     }
 
-    /// <summary>
-    /// Chooses a point at random from our array of transforms and returns the position
-    /// </summary>
-    private Vector3 ChooseARandomSpawnPoint()
-    {
-        int randomPointIndex = Random.Range(0, spawnPoints.Length);
-        Transform t;
+    //public Vector3 RandomNavmeshLocation(float radius)
+    //{
+    //    NavMeshHit hit;
+    //    Vector3 randomDirection = Random.insideUnitSphere * radius;
+    //    Vector3 finalPosition = Vector3.zero;
 
-        for (int i = 0; i < spawnPoints.Length; i++)
-        {
-            if (i == randomPointIndex)
-            {
-                t = spawnPoints[i];
-                return t.position;
-            }
-        }
-        t = spawnPoints[0];
-        return t.position;//if it didn't choose a point, return the first one of the index
-    }
+    //    randomDirection += transform.position;
+
+    //    if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1))
+    //    {
+    //        finalPosition = hit.position;
+    //    }
+    //    return finalPosition;
+    //}
+
+    ///// <summary>
+    ///// Chooses a point at random from our array of transforms and returns the position
+    ///// </summary>
+    //private Vector3 ChooseARandomSpawnPoint()
+    //{
+    //    int randomPointIndex = Random.Range(0, spawnPoints.Length);
+    //    Transform t;
+
+    //    for (int i = 0; i < spawnPoints.Length; i++)
+    //    {
+    //        if (i == randomPointIndex)
+    //        {
+    //            t = spawnPoints[i];
+    //            return t.position;
+    //        }
+    //    }
+    //    t = spawnPoints[0];
+    //    return t.position;//if it didn't choose a point, return the first one of the index
+    //}
 }

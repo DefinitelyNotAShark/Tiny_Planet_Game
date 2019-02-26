@@ -23,8 +23,10 @@ public class PlayerShoot : MonoBehaviour
         if (Input.GetButtonDown("Shoot"))
         {
             Shoot();
-            anim.SetTrigger("Shoot");
+            anim.SetBool("isShooting", true);
         }
+        else
+            anim.SetBool("isShooting", false);
 	}
 
     void Shoot()
