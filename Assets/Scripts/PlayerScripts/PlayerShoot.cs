@@ -11,11 +11,20 @@ public class PlayerShoot : MonoBehaviour
     private float bulletSpeed, bulletLifetime;
 
     private GameObject bulletInstance;
+    private Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponentInParent<Animator>();
+    }
 
     void Update ()
     {
         if (Input.GetButtonDown("Shoot"))
+        {
             Shoot();
+            anim.SetTrigger("Shoot");
+        }
 	}
 
     void Shoot()
