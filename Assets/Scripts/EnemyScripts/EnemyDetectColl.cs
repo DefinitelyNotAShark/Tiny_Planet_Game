@@ -7,8 +7,10 @@ public class EnemyDetectColl : MonoBehaviour
     private int damageAmount;
     private int damageCoolDown;
     private bool coroutineStarted;
+    private bool enemyIsDead;
 
     private Rigidbody rigidbody;
+
 
     private void Start()
     {
@@ -24,8 +26,12 @@ public class EnemyDetectColl : MonoBehaviour
     {
         if (other.gameObject.tag == "Bullet")//check for being shot
         {
-            GameObject.FindGameObjectWithTag("Spawner").GetComponent<EnemySpawner>().enemiesOnScreen--;//decrease enemy amount
-            Destroy(this.gameObject);
+            if (!enemyIsDead)
+            {
+                enemyIsDead = true;
+                GameObject.FindGameObjectWithTag("Spawner").GetComponent<EnemySpawner>().enemiesOnScreen--;//decrease enemy amount
+                Destroy(this.gameObject);
+            }
         }
 
 

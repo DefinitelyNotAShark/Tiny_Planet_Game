@@ -10,12 +10,12 @@ public class EnemySpawner : MonoBehaviour
     [HideInInspector]
     public int enemiesOnScreen;
 
+    [Tooltip("The number of enemies spawned before the wave stops")]
+    public int numberOfEnemiesInWave;
+
     [SerializeField]
     private float minTimeBetweenSpawn, maxTimeBetweenSpawn;
 
-    [SerializeField]
-    [Tooltip("The number of enemies spawned before the wave stops")]
-    private int numberOfEnemiesInWave;
 
     [SerializeField]
     [Tooltip("The amount of time you get to catch your breath inbetween waves")]
@@ -37,6 +37,9 @@ public class EnemySpawner : MonoBehaviour
     [Tooltip("The minimum distance the enemy can spawn to the player")]
     private float minDistanceSpawnFromPlayer, minDistanceMoveTowardsPlayer;
 
+    [SerializeField]
+    private WaveAlert waveUI;
+
     private GameObject objectInstance;
 
     void Start()
@@ -49,10 +52,11 @@ public class EnemySpawner : MonoBehaviour
     {
         for (; ; )//HACK maybe put this in a game loop later?
         {
-            yield return new WaitForSeconds(timeBetweenWaves);
+            if (enemiesOnScreen == 0)
+            {
+                yield return new WaitForSeconds(timeBetweenWaves);
+                StartCoroutine(waveUI.StartAlert());
 
-            if(enemiesOnScreen == 0)
-            { 
                 for (int i = 0; i < numberOfEnemiesInWave; i++)
                 {
                     yield return new WaitForSeconds(ChooseARandomSpawnTime());//waits a random time that it chooses from our min to our max
@@ -60,8 +64,10 @@ public class EnemySpawner : MonoBehaviour
                     enemiesOnScreen++;
                 }
 
-                yield return new WaitForEndOfFrame();//lil pause
             }
+
+            yield return new WaitForEndOfFrame();//lil pause
+            Debug.Log("Enemies Left: " + enemiesOnScreen.ToString());
         }
     }
 

@@ -33,8 +33,6 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= amount;//take away our health
         ChangeHealthColor();
-        Debug.Log("OW! Player was hurt. Health left: " + currentHealth);
-
     }
 
     private void Update()
