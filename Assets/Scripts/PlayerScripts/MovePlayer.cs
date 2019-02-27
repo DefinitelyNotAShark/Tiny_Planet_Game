@@ -10,6 +10,7 @@ public class MovePlayer : MonoBehaviour
     [SerializeField]
     private float moveSpeed;
 
+    private ParticleSystem fallParticles;
 
     private Vector3 moveDirection;
     private Rigidbody rigidbody;
@@ -18,10 +19,13 @@ public class MovePlayer : MonoBehaviour
     private float horizontal;
     private float vertical;
 
+    private bool playerHasFallenToPlanet;
+
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
+        fallParticles = GetComponentInChildren<ParticleSystem>();
     }
 
     void Update()
@@ -29,7 +33,7 @@ public class MovePlayer : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
-        moveDirection = new Vector3(horizontal, 0, vertical) * moveSpeed * Time.deltaTime;
+        moveDirection = new Vector3(horizontal, 0, vertical) * moveSpeed * Time.deltaTime;      
     }
 
     private void FixedUpdate()
@@ -40,6 +44,15 @@ public class MovePlayer : MonoBehaviour
             anim.SetBool("isMoving", true);//then the animator knows we moving
         
         else
-            anim.SetBool("isMoving", false);//otherwise we're not moving
+            anim.SetBool("isMoving", false);//otherwise we're not moving        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!playerHasFallenToPlanet)
+        {
+            fallParticles.Play();
+            playerHasFallenToPlanet = true;//only plays once
+        }
     }
 }
