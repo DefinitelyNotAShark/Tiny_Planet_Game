@@ -22,7 +22,14 @@ public class EnemySpawner : MonoBehaviour
     private GameObject enemyPrefab;
 
     [SerializeField]
+    private Transform playerTransform;
+
+    [SerializeField]
     private float planetRadius;
+
+    [SerializeField]
+    [Tooltip("The minimum distance the enemy can spawn to the player")]
+    private float minDistanceFromPlayer;
 
     private GameObject objectInstance;
 
@@ -66,6 +73,15 @@ public class EnemySpawner : MonoBehaviour
             z = Random.Range(-planetRadius, planetRadius);
             d = x * x + y * y + z * z;
         } while (d > 1.0);
+
+        float distance = Vector3.Distance(new Vector3(x, y, z), playerTransform.position);//calculate distance between player and possible enemy spawn point
+        Debug.Log("Distance is: " + distance.ToString());
+        if (distance < minDistanceFromPlayer)//if the enemy is too close to the player, 
+        {
+            Debug.Log("the player was too close. Distance was " + distance.ToString());
+            GenerateRandomPoint();//try coming up with a new point
+        }
+
         return new Vector3(x, y, z);
     }
 

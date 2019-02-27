@@ -123,7 +123,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400162, guid: 3504af0049a1fae4694a90a3264ce2a4,
     type: 3}
   m_PrefabInternal: {fileID: 2008350537}
---- !u!114 &18912944
+--- !u!114 &18912946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 18912942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 963637fe55b9f1b49a1a2ca1d939d0c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 66b55b0df5f8dc449ace285568fd1aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &170076733
@@ -240,13 +240,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a961d7038bc6846aa1f7f903fb305c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minTimeBetweenSpawn: 4
-  maxTimeBetweenSpawn: 6
-  numberOfEnemiesInWave: 3
-  timeBetweenWaves: 2
+  minTimeBetweenSpawn: 1
+  maxTimeBetweenSpawn: 3
+  numberOfEnemiesInWave: 10
+  timeBetweenWaves: 10
   enemyPrefab: {fileID: 1987027628816436, guid: f47edd6b0dc86c545b68a1bdd14a1be4,
     type: 2}
+  playerTransform: {fileID: 1819998598}
   planetRadius: 25
+  minDistanceFromPlayer: 20
 --- !u!4 &922019066 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400018, guid: 3504af0049a1fae4694a90a3264ce2a4,
