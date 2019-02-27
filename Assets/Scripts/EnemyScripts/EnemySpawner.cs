@@ -66,7 +66,7 @@ public class EnemySpawner : MonoBehaviour
                     enemiesOnScreen++;
                 }
 
-                healthSpawnScript.SpawnHealthPacks();//put some health on the screen after enemies have spawned
+                healthSpawnScript.SpawnHealthPacks(GenerateRandomPoint());//put some health on the screen after enemies have spawned
             }
 
             yield return new WaitForEndOfFrame();//lil pause

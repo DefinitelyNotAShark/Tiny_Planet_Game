@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-
     [SerializeField]
     private Color fullHealthColor, zeroHealthColor, semiFullHealthColor;
 
@@ -18,12 +17,17 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
-    public Image FillImage;
+    [SerializeField]
+    private Image FillImage;
+
+    public int StartingHealth = 100;
+    private int currentHealth;
+
     private Slider Slider;
     private Renderer[] renderers;
 
-    public float StartingHealth = 100f;
-    private int currentHealth;
+
+
     private int fullHealth;
     private bool playerIsInvincible;
 
@@ -48,6 +52,12 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void HealPlayer(int amount)
+    {
+        currentHealth += amount;
+        ChangeHealthColor();
+    }
+
     private void Update()
     {
         if (PlayerIsDead())
@@ -59,6 +69,7 @@ public class PlayerHealth : MonoBehaviour
     private void ChangeHealthColor()
     {
         Slider.value = currentHealth;
+
         if (currentHealth > 80)
         {
             FillImage.color = fullHealthColor;

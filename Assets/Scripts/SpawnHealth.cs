@@ -7,8 +7,8 @@ public class SpawnHealth : MonoBehaviour
     [SerializeField]
     private GameObject healthPrefab;
 
-	public void SpawnHealthPack()
+	public void SpawnHealthPacks(Vector3 generatedPoint)
     {
-
+        GameObject healthInstance = Instantiate(healthPrefab, generatedPoint, transform.rotation);
     }
 }
