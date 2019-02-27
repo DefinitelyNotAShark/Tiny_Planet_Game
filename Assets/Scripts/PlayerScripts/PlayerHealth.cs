@@ -7,10 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
 
     [SerializeField]
-    private Color FullHealthColor;
-
-    [SerializeField]
-    private Color ZeroHealthColor;
+    private Color fullHealthColor, zeroHealthColor, semiFullHealthColor;
 
     [SerializeField]
     private GameObject deathPanel;
@@ -51,7 +48,18 @@ public class PlayerHealth : MonoBehaviour
     private void ChangeHealthColor()
     {
         Slider.value = currentHealth;
-        FillImage.color = Color.Lerp(ZeroHealthColor, FullHealthColor, currentHealth / 100);//change the color depending on how much health we have
+        if (currentHealth > 80)
+        {
+            FillImage.color = fullHealthColor;
+        }
+        else if (currentHealth > 30)
+        {
+            FillImage.color = semiFullHealthColor;
+        }
+        else if(currentHealth < 30)
+        {
+            FillImage.color = zeroHealthColor;
+        }
     }
 
     private bool PlayerIsDead()

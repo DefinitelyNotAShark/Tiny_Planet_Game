@@ -1233,6 +1233,66 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114245653276836180, guid: a5137a2877e8c78419e3e6f2cf988c6a,
+        type: 2}
+      propertyPath: fullHealthColor.r
+      value: 0.047058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 114245653276836180, guid: a5137a2877e8c78419e3e6f2cf988c6a,
+        type: 2}
+      propertyPath: fullHealthColor.g
+      value: 0.9607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 114245653276836180, guid: a5137a2877e8c78419e3e6f2cf988c6a,
+        type: 2}
+      propertyPath: fullHealthColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114245653276836180, guid: a5137a2877e8c78419e3e6f2cf988c6a,
+        type: 2}
+      propertyPath: fullHealthColor.a
+      value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 114245653276836180, guid: a5137a2877e8c78419e3e6f2cf988c6a,
+        type: 2}
+      propertyPath: zeroHealthColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114245653276836180, guid: a5137a2877e8c78419e3e6f2cf988c6a,
+        type: 2}
+      propertyPath: zeroHealthColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114245653276836180, guid: a5137a2877e8c78419e3e6f2cf988c6a,
+        type: 2}
+      propertyPath: zeroHealthColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114245653276836180, guid: a5137a2877e8c78419e3e6f2cf988c6a,
+        type: 2}
+      propertyPath: zeroHealthColor.a
+      value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 114245653276836180, guid: a5137a2877e8c78419e3e6f2cf988c6a,
+        type: 2}
+      propertyPath: semiFullHealthColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114245653276836180, guid: a5137a2877e8c78419e3e6f2cf988c6a,
+        type: 2}
+      propertyPath: semiFullHealthColor.g
+      value: 0.8144701
+      objectReference: {fileID: 0}
+    - target: {fileID: 114245653276836180, guid: a5137a2877e8c78419e3e6f2cf988c6a,
+        type: 2}
+      propertyPath: semiFullHealthColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114245653276836180, guid: a5137a2877e8c78419e3e6f2cf988c6a,
+        type: 2}
+      propertyPath: semiFullHealthColor.a
+      value: 0.39215687
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5137a2877e8c78419e3e6f2cf988c6a, type: 2}
   m_IsPrefabAsset: 0
@@ -6260,6 +6320,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4277314875092010, guid: a5137a2877e8c78419e3e6f2cf988c6a,
     type: 2}
   m_PrefabInternal: {fileID: 1240119504}
+--- !u!1 &2035175295
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2035175296}
+  m_Layer: 0
+  m_Name: HealthSpawnerObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2035175296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2035175295}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.69142, y: 25.829136, z: 21.480488}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2049447998
 GameObject:
   m_ObjectHideFlags: 0
