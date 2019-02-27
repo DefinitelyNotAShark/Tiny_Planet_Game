@@ -18,8 +18,13 @@ public class EnemyDetectColl : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Bullet")//check for being shot
+        {
+            GameObject.FindGameObjectWithTag("Spawner").GetComponent<EnemySpawner>().enemiesOnScreen--;//decrease enemy amount
             Destroy(this.gameObject);
-        else if(other.gameObject.tag == "Player")//check for hurting player
+        }
+
+
+        else if (other.gameObject.tag == "Player")//check for hurting player
         {
             StartCoroutine(HurtPlayer(other));//hurt them
         }

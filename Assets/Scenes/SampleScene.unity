@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 475124483}
   m_Layer: 0
   m_Name: EnemySpawnerObject
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -281,9 +281,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a961d7038bc6846aa1f7f903fb305c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemiesOnScreen: 0
   minTimeBetweenSpawn: 1
   maxTimeBetweenSpawn: 3
-  numberOfEnemiesInWave: 10
+  numberOfEnemiesInWave: 3
   timeBetweenWaves: 2
   enemyPrefab: {fileID: 1639369734737776, guid: d588c6400755282419a65e6906e780ae,
     type: 2}

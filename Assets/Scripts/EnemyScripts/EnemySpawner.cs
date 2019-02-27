@@ -7,6 +7,9 @@ using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [HideInInspector]
+    public int enemiesOnScreen;
+
     [SerializeField]
     private float minTimeBetweenSpawn, maxTimeBetweenSpawn;
 
@@ -38,20 +41,26 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
+        enemiesOnScreen = 0;
         StartCoroutine(StartSpawning());//start the spawning loop
     }
 
     private IEnumerator StartSpawning()
     {
-
         for (; ; )//HACK maybe put this in a game loop later?
         {
             yield return new WaitForSeconds(timeBetweenWaves);
 
-            for (int i = 0; i < numberOfEnemiesInWave; i++)
-            {
-                yield return new WaitForSeconds(ChooseARandomSpawnTime());//waits a random time that it chooses from our min to our max
-                Spawn();
+            if(enemiesOnScreen == 0)
+            { 
+                for (int i = 0; i < numberOfEnemiesInWave; i++)
+                {
+                    yield return new WaitForSeconds(ChooseARandomSpawnTime());//waits a random time that it chooses from our min to our max
+                    Spawn();
+                    enemiesOnScreen++;
+                }
+
+                yield return new WaitForEndOfFrame();//lil pause
             }
         }
     }
@@ -90,39 +99,4 @@ public class EnemySpawner : MonoBehaviour
 
         return new Vector3(x, y, z);
     }
-
-    //public Vector3 RandomNavmeshLocation(float radius)
-    //{
-    //    NavMeshHit hit;
-    //    Vector3 randomDirection = Random.insideUnitSphere * radius;
-    //    Vector3 finalPosition = Vector3.zero;
-
-    //    randomDirection += transform.position;
-
-    //    if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1))
-    //    {
-    //        finalPosition = hit.position;
-    //    }
-    //    return finalPosition;
-    //}
-
-    ///// <summary>
-    ///// Chooses a point at random from our array of transforms and returns the position
-    ///// </summary>
-    //private Vector3 ChooseARandomSpawnPoint()
-    //{
-    //    int randomPointIndex = Random.Range(0, spawnPoints.Length);
-    //    Transform t;
-
-    //    for (int i = 0; i < spawnPoints.Length; i++)
-    //    {
-    //        if (i == randomPointIndex)
-    //        {
-    //            t = spawnPoints[i];
-    //            return t.position;
-    //        }
-    //    }
-    //    t = spawnPoints[0];
-    //    return t.position;//if it didn't choose a point, return the first one of the index
-    //}
 }

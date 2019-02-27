@@ -13,18 +13,22 @@ public class PlayerShoot : MonoBehaviour
     private GameObject bulletInstance;
     private Animator anim;
 
+    private bool coroutineStarted;
+    
     private void Start()
     {
         anim = GetComponentInParent<Animator>();
-        animation = GetComponentInParent<Animation>();
     }
 
     void Update ()
     {
         if (Input.GetButtonDown("Shoot"))
         {
-            StartCoroutine(ShootWithAnimation());
-            anim.SetBool("isShooting", true);
+            if (!coroutineStarted)
+            {
+                StartCoroutine(ShootWithAnimation());
+                anim.SetBool("isShooting", true);
+            }
         }
         else
             anim.SetBool("isShooting", false);
@@ -40,10 +44,14 @@ public class PlayerShoot : MonoBehaviour
 
     private IEnumerator ShootWithAnimation()
     {
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        coroutineStarted = true;
+        yield return new WaitForSeconds(.2f);
 
         bulletInstance = Instantiate(bulletPrefab, transform.position, transform.rotation);
         bulletInstance.AddComponent<MoveBullet>().speed = bulletSpeed;
         bulletInstance.GetComponent<MoveBullet>().lifetime = bulletLifetime;
+
+        yield return new WaitForSeconds(.5f);//tiny cooldown
+        coroutineStarted = false;
     }
 }
