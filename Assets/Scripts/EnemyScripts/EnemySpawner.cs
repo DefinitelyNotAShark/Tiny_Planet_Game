@@ -16,7 +16,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private float minTimeBetweenSpawn, maxTimeBetweenSpawn;
 
-
     [SerializeField]
     [Tooltip("The amount of time you get to catch your breath inbetween waves")]
     private float timeBetweenWaves;
@@ -39,6 +38,9 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField]
     private WaveAlert waveUI;
+
+    [SerializeField]
+    private SpawnHealth healthSpawnScript;
 
     private GameObject objectInstance;
 
@@ -64,6 +66,7 @@ public class EnemySpawner : MonoBehaviour
                     enemiesOnScreen++;
                 }
 
+                healthSpawnScript.SpawnHealthPacks();//put some health on the screen after enemies have spawned
             }
 
             yield return new WaitForEndOfFrame();//lil pause
