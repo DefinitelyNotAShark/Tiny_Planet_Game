@@ -13,6 +13,8 @@ public class EnemyDetectColl : MonoBehaviour
         coroutineStarted = false;
         damageAmount = 10;
         damageCoolDown = 1;
+
+        Physics.IgnoreCollision(GetComponent<Collider>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>());
     }
 
     private void OnTriggerEnter(Collider other)

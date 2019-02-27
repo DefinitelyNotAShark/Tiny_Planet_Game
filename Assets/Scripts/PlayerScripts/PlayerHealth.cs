@@ -12,6 +12,9 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     private Color ZeroHealthColor;
 
+    [SerializeField]
+    private GameObject deathPanel;
+
     public Image FillImage;
     private Slider Slider;
 
@@ -31,11 +34,17 @@ public class PlayerHealth : MonoBehaviour
 
     public void HurtPlayer(int amount)
     {
-        if (!PlayerIsDead())
+        currentHealth -= amount;//take away our health
+        ChangeHealthColor();
+        Debug.Log("OW! Player was hurt. Health left: " + currentHealth);
+
+    }
+
+    private void Update()
+    {
+        if (PlayerIsDead())
         {
-            currentHealth -= amount;//take away our health
-            ChangeHealthColor();
-            Debug.Log("OW! Player was hurt. Health left: " +  currentHealth);
+            DoDeath();
         }
     }
 
@@ -51,5 +60,11 @@ public class PlayerHealth : MonoBehaviour
             return true;          
         else
             return false;
+    }
+
+    private void DoDeath()
+    {
+        Time.timeScale = 0f;
+        deathPanel.gameObject.SetActive(true);
     }
 }
