@@ -701,7 +701,7 @@ MonoBehaviour:
     type: 2}
   playerTransform: {fileID: 1819998598}
   planetRadius: 25
-  enemySpeed: 1
+  enemySpeed: 3
   minDistanceSpawnFromPlayer: 10
   minDistanceMoveTowardsPlayer: 2
 --- !u!1 &503173255
@@ -1773,7 +1773,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1880,7 +1880,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1942,7 +1942,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.2
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -2348,7 +2348,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 1.2644181
       mode: 0
       spread: 0
       speed:
@@ -2897,7 +2897,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -2906,7 +2906,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.7254361, g: 0.735849, b: 0.7254363, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 0.92156863}
+        key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -2922,7 +2922,7 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 28142
+        atime1: 40092
         atime2: 65535
         atime3: 0
         atime4: 0
