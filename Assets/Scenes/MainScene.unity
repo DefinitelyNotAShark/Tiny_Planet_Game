@@ -284,6 +284,8 @@ GameObject:
   - component: {fileID: 52450868}
   - component: {fileID: 52450870}
   - component: {fileID: 52450869}
+  - component: {fileID: 52450871}
+  - component: {fileID: 52450872}
   m_Layer: 5
   m_Name: EnemiesRemainingUI
   m_TagString: Untagged
@@ -297,7 +299,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 52450867}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -306,8 +308,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -87.6, y: 33}
-  m_SizeDelta: {x: 175.1, y: 65.8}
+  m_AnchoredPosition: {x: -45.100006, y: 26.399994}
+  m_SizeDelta: {x: 90.1, y: 53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &52450869
 MonoBehaviour:
@@ -330,22 +332,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0adf0bf762687ed4593803abb6f91e67, type: 3}
-    m_FontSize: 15
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Enemies Remaining:
-
-    3/3
-
-'
+  m_Text: text
 --- !u!222 &52450870
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -353,6 +351,32 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 52450867}
   m_CullTransparentMesh: 0
+--- !u!114 &52450871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 52450867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130ee85e5363882438b145572a3863b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnScript: {fileID: 475124483}
+--- !u!114 &52450872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 52450867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &61157564
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,9 +957,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesOnScreen: 0
+  numberOfEnemiesInWave: 3
   minTimeBetweenSpawn: 1
   maxTimeBetweenSpawn: 2
-  numberOfEnemiesInWave: 3
   timeBetweenWaves: 2
   enemyPrefab: {fileID: 1639369734737776, guid: d588c6400755282419a65e6906e780ae,
     type: 2}
