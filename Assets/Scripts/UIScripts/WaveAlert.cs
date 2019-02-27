@@ -10,15 +10,18 @@ public class WaveAlert : MonoBehaviour
 
     private Image image;
     private Text text;
+    private int waveCounter;
 
     void Start()
     {
         text = GetComponentInChildren<Text>();
         image = GetComponent<Image>();
+        waveCounter = 1;
     }
 
     public IEnumerator StartAlert()
     {
+        text.text = "Level " + waveCounter + ":\nA new wave of enemies is approaching!";
         // lfade from transparent to opaque
         for (float i = 0; i <= fadeAmount; i += Time.deltaTime)//fade in
         {
@@ -39,6 +42,8 @@ public class WaveAlert : MonoBehaviour
             text.color = new Color(255, 255, 255, i);
             yield return null;
         }
+
+        waveCounter++;
     }
 }
 
