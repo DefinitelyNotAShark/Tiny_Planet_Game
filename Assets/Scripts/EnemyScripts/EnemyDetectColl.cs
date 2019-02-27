@@ -10,16 +10,18 @@ public class EnemyDetectColl : MonoBehaviour
     private bool enemyIsDead;
 
     private Rigidbody rigidbody;
+    private ParticleSystem hitParticles;
 
 
     private void Start()
-    {
+    {     
         coroutineStarted = false;
         damageAmount = 10;
         damageCoolDown = 1;
 
         //Physics.IgnoreCollision(GetComponent<Collider>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>());
         rigidbody = GetComponent<Rigidbody>();
+        hitParticles = GetComponentInChildren<ParticleSystem>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,6 +54,7 @@ public class EnemyDetectColl : MonoBehaviour
 
     private IEnumerator HurtPlayer(Collider other)
     {
+        hitParticles.Play();
         coroutineStarted = true;
         DoKnockBack(other);//pass in the player coll so it can get the player position
         other.gameObject.GetComponentInChildren<PlayerHealth>().HurtPlayer(damageAmount);//take player health down by the amount (damage amount)
