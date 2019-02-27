@@ -12,16 +12,25 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     private GameObject deathPanel;
 
+    [SerializeField]
+    private int blinkAmount;
+
+    [SerializeField]
+    private GameObject player;
+
     public Image FillImage;
     private Slider Slider;
+    private Renderer[] renderers;
 
     public float StartingHealth = 100f;
     private int currentHealth;
     private int fullHealth;
+    private bool playerIsInvincible;
 
     private void Start()
     {
         Slider = GetComponentInChildren<Slider>();
+        renderers = player.GetComponentsInChildren<Renderer>();
 
         fullHealth = 100;
         currentHealth = fullHealth;
@@ -31,8 +40,12 @@ public class PlayerHealth : MonoBehaviour
 
     public void HurtPlayer(int amount)
     {
-        currentHealth -= amount;//take away our health
-        ChangeHealthColor();
+        if (!playerIsInvincible)
+        {
+            StartCoroutine(PlayerInvincibility());
+            currentHealth -= amount;//take away our health
+            ChangeHealthColor();
+        }
     }
 
     private void Update()
@@ -72,5 +85,39 @@ public class PlayerHealth : MonoBehaviour
     {
         Time.timeScale = 0f;
         deathPanel.gameObject.SetActive(true);
+    }
+
+    private IEnumerator PlayerInvincibility()
+    {
+        playerIsInvincible = true;
+
+        for (int i = 0; i < blinkAmount; i++)
+        {
+            ToggleRenderers();
+            yield return new WaitForSeconds(.1f);
+        }
+        MakeSurePlayerIsVisible();
+
+        playerIsInvincible = false;
+    }
+
+    void ToggleRenderers()
+    {
+        foreach(Renderer r in renderers)
+        {
+            if (r.enabled == true)
+                r.enabled = false;
+            else if (r.enabled == false)
+                r.enabled = true;
+        }
+    }
+
+    void MakeSurePlayerIsVisible()
+    {
+        foreach (Renderer r in renderers)
+        {
+            if (r.enabled == false)
+                r.enabled = true;
+        }
     }
 }

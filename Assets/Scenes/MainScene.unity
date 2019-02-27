@@ -1558,6 +1558,16 @@ Prefab:
       propertyPath: semiFullHealthColor.a
       value: 0.39215687
       objectReference: {fileID: 0}
+    - target: {fileID: 114245653276836180, guid: a5137a2877e8c78419e3e6f2cf988c6a,
+        type: 2}
+      propertyPath: blinkAmount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114245653276836180, guid: a5137a2877e8c78419e3e6f2cf988c6a,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1906338641}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5137a2877e8c78419e3e6f2cf988c6a, type: 2}
   m_IsPrefabAsset: 0
@@ -6698,6 +6708,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1906338641 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1427261526543054, guid: a5137a2877e8c78419e3e6f2cf988c6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1240119504}
 --- !u!1 &2035175295
 GameObject:
   m_ObjectHideFlags: 0
