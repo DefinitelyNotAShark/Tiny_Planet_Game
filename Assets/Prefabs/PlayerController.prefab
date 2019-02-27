@@ -420,6 +420,7 @@ GameObject:
   - component: {fileID: 223223086700123036}
   - component: {fileID: 114434648333166190}
   - component: {fileID: 114129962485800964}
+  - component: {fileID: 114245653276836180}
   m_Layer: 0
   m_Name: PlayerHealthUI
   m_TagString: Untagged
@@ -561,7 +562,7 @@ GameObject:
   - component: {fileID: 136659343124937126}
   m_Layer: 0
   m_Name: PlayerController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1916,7 +1917,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1331394061814694}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 25.95, z: 0.22}
+  m_LocalPosition: {x: 0.01, y: 26.95, z: 0.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4621905400336460}
@@ -3205,7 +3206,22 @@ MonoBehaviour:
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 0
-  m_FillOrigin: 2
+  m_FillOrigin: 0
+--- !u!114 &114245653276836180
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1231267505817070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ec918f56c0be846b48644b950aed17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FullHealthColor: {r: 0.047058824, g: 0.9607843, b: 0, a: 0.39215687}
+  ZeroHealthColor: {r: 1, g: 0, b: 0, a: 0.39215687}
+  FillImage: {fileID: 114175891757430606}
+  StartingHealth: 100
 --- !u!114 &114247575750776430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3333,7 +3349,7 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 100
-  m_WholeNumbers: 0
+  m_WholeNumbers: 1
   m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
