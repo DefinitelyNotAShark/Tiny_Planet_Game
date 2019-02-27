@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnHealth : MonoBehaviour {
+public class SpawnHealth : MonoBehaviour
+{
+    [SerializeField]
+    private GameObject healthPrefab;
 
 	// Use this for initialization
 	void Start () {
