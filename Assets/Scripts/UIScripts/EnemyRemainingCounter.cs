@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EnemyRemainingCounter : MonoBehaviour
 {
     [SerializeField]
-    private EnemySpawner spawnScript;
+    private GameManager manager;
 
     private int enemiesRemaining;
     private int enemiesSpawned;
@@ -20,8 +20,8 @@ public class EnemyRemainingCounter : MonoBehaviour
 
     private void Update()
     {
-        enemiesRemaining = spawnScript.enemiesOnScreen;
-        enemiesSpawned = spawnScript.numberOfEnemiesInWave;
+        enemiesRemaining = manager.EnemiesOnScreen;
+        enemiesSpawned = manager.numberOfEnemiesInWave;
 
         if(enemiesRemaining < 0)
         {

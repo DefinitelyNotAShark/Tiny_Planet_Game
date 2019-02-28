@@ -2,24 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-//Tutorial for spawning random point
-//https://answers.unity.com/questions/475066/how-to-get-a-random-point-on-navmesh.html
+
 
 public class EnemySpawner : MonoBehaviour
 {
-    [HideInInspector]
-    public int enemiesOnScreen;
-
-    [Tooltip("The number of enemies spawned before the wave stops")]
-    public int numberOfEnemiesInWave;
-
-    [SerializeField]
-    private float minTimeBetweenSpawn, maxTimeBetweenSpawn;
-
-    [SerializeField]
-    [Tooltip("The amount of time you get to catch your breath inbetween waves")]
-    private float timeBetweenWaves;
-
     [SerializeField]
     private GameObject enemyPrefab;
 
@@ -27,101 +13,35 @@ public class EnemySpawner : MonoBehaviour
     private Transform playerTransform;
 
     [SerializeField]
-    private float planetRadius;
-
-    [SerializeField]
-    private float enemySpeed;
+    private float enemySpeed, maxEnemySpeed;
 
     [SerializeField]
     [Tooltip("The minimum distance the enemy can spawn to the player")]
-    private float minDistanceSpawnFromPlayer, minDistanceMoveTowardsPlayer;
-
-    [SerializeField]
-    private WaveAlert waveUI;
-
-    [SerializeField]
-    private GunUpgradedAlert gunUI;
-
-    [SerializeField]
-    private SpawnHealth healthSpawnScript;
+    private float minDistanceMoveTowardsPlayer;
 
     private GameObject objectInstance;
     private PlayerShoot shootScript;//allows me to change the gun type in this script
-    private bool isStart = true;
 
-    void Start()
+    /// <summary>
+    /// Spawn a new enemy at the passed in position
+    /// </summary>
+    /// <param name="spawnPoint"></param>
+    public void Spawn(Vector3 spawnPoint)
     {
-        shootScript = playerTransform.GetComponent<PlayerShoot>();
-        enemiesOnScreen = 0;
-        StartCoroutine(StartSpawning());//start the spawning loop
-    }
+        //instantiate the enemy
+        objectInstance = Instantiate(enemyPrefab, spawnPoint, transform.localRotation);//spawns our enemy at the position of the spawn point and it's normal rotation 
 
-    private IEnumerator StartSpawning()
-    {
-        for (; ; )//HACK maybe put this in a game loop later?
-        {
-            if (enemiesOnScreen == 0)
-            {
-                //gun upgrades
-                if (!isStart)//only do this stuff on the next waves, not on the first one
-                {
-                    shootScript.AddBullet();//add one bullet to the gun to shoot at a time. start with 0 and get one right as you start
-                    StartCoroutine(gunUI.StartAlert());
-                    numberOfEnemiesInWave++;//add another enemy to the next wave each time
-                }
-
-                isStart = false;
-
-                yield return new WaitForSeconds(timeBetweenWaves);
-
-                StartCoroutine(waveUI.StartAlert());
-
-                for (int i = 0; i < numberOfEnemiesInWave; i++)
-                {
-                    //yield return new WaitForSeconds(ChooseARandomSpawnTime());//waits a random time that it chooses from our min to our max
-                    Spawn();
-                    enemiesOnScreen++;
-                }
-
-                healthSpawnScript.SpawnHealthPacks(GenerateRandomPoint());//put some health on the screen after enemies have spawned
-            }
-
-            yield return new WaitForEndOfFrame();//lil pause
-        }
-    }
-
-    private float ChooseARandomSpawnTime()
-    {
-        return Random.Range(minTimeBetweenSpawn, maxTimeBetweenSpawn);
-    }
-
-    private void Spawn()
-    {
-        objectInstance = Instantiate(enemyPrefab, GenerateRandomPoint(), transform.localRotation);//spawns our enemy at the position of the spawn point and it's normal rotation 
+        //set the variables to the serialize field ones
         objectInstance.AddComponent<EnemyMove>().playerTransform = playerTransform;
         objectInstance.GetComponent<EnemyMove>().minDistance = minDistanceMoveTowardsPlayer;
         objectInstance.GetComponent<EnemyMove>().enemySpeed = enemySpeed;
     }
 
-    private Vector3 GenerateRandomPoint()
+    public void IncreaseSpeed()
     {
-        float x, y, z, d;
-        do
+        if(enemySpeed < maxEnemySpeed)
         {
-            x = Random.Range(-planetRadius, planetRadius);
-            y = Random.Range(-planetRadius, planetRadius);
-            z = Random.Range(-planetRadius, planetRadius);
-            d = x * x + y * y + z * z;
-        } while (d > 1.0);
-
-        float distance = Vector3.Distance(new Vector3(x, y, z), playerTransform.position);//calculate distance between player and possible enemy spawn point
-
-        if (distance < minDistanceSpawnFromPlayer)//if the enemy is too close to the player, 
-        {
-            Debug.Log("the player was too close. Distance was " + distance.ToString());
-            GenerateRandomPoint();//try coming up with a new point
+            enemySpeed++;
         }
-
-        return new Vector3(x, y, z);
     }
 }

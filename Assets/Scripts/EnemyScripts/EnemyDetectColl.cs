@@ -19,7 +19,6 @@ public class EnemyDetectColl : MonoBehaviour
         damageAmount = 10;
         damageCoolDown = 1;
 
-        //Physics.IgnoreCollision(GetComponent<Collider>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>());
         rigidbody = GetComponent<Rigidbody>();
         hitParticles = GetComponentInChildren<ParticleSystem>();
     }
@@ -28,10 +27,10 @@ public class EnemyDetectColl : MonoBehaviour
     {
         if (other.gameObject.tag == "Bullet")//check for being shot
         {
-            if (!enemyIsDead)
+            if (!enemyIsDead)//if the enemy is not already going through death 
             {
-                enemyIsDead = true;
-                GameObject.FindGameObjectWithTag("Spawner").GetComponent<EnemySpawner>().enemiesOnScreen--;//decrease enemy amount
+                enemyIsDead = true;//set the enemy to be going through death
+                GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().DecreaseEnemyAmount();//decrease enemy amount
                 Destroy(this.gameObject);
             }
         }

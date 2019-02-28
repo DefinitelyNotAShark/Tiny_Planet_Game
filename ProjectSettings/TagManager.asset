@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Planet
   - Bullet
-  - Spawner
+  - GameManager
   layers:
   - Default
   - TransparentFX
