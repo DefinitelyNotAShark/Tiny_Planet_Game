@@ -28,6 +28,10 @@ public class MainMenuNav : MonoBehaviour
         startPanel.SetActive(false);
         instructionsPanel.SetActive(true);
     }
+    public void OnButtonPressed()
+    {
+        audioSource.PlayOneShot(buttonClick, buttonClickVolume);
+    }
 
     public void OnHowToStartPressed()
     {
