@@ -21,20 +21,20 @@ public class PlayerHealth : MonoBehaviour
     private Image FillImage;
 
     public int StartingHealth = 100;
+    private int fullHealth;
     private int currentHealth;
 
+    private bool playerIsInvincible;
+
+    private AudioSource audio;
     private Slider Slider;
     private Renderer[] renderers;
-
-
-
-    private int fullHealth;
-    private bool playerIsInvincible;
 
     private void Start()
     {
         Slider = GetComponentInChildren<Slider>();
         renderers = player.GetComponentsInChildren<Renderer>();
+        audio = GetComponentInParent<AudioSource>();
 
         fullHealth = 100;
         currentHealth = fullHealth;

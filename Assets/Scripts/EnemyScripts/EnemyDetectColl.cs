@@ -11,6 +11,7 @@ public class EnemyDetectColl : MonoBehaviour
 
     private Rigidbody rigidbody;
     private ParticleSystem hitParticles;
+    private AudioSource audio;
 
 
     private void Start()
@@ -21,6 +22,7 @@ public class EnemyDetectColl : MonoBehaviour
 
         rigidbody = GetComponent<Rigidbody>();
         hitParticles = GetComponentInChildren<ParticleSystem>();
+        audio = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -53,6 +55,7 @@ public class EnemyDetectColl : MonoBehaviour
 
     private IEnumerator HurtPlayer(Collider other)
     {
+        audio.Play();
         hitParticles.Play();
         coroutineStarted = true;
         DoKnockBack(other);//pass in the player coll so it can get the player position

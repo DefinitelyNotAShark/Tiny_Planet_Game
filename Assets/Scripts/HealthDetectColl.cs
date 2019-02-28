@@ -31,11 +31,11 @@ public class HealthDetectColl : MonoBehaviour
     {
         coroutineStarted = true;
 
-        audio.Play();//play the get health sound so the player knows something happened
-        player.GetComponentInChildren<PlayerHealth>().HealPlayer(50);//give player back 50 health
-
         foreach (Renderer r in renderers)
             r.enabled = false;//make untouchable
+
+        audio.Play();//play the get health sound so the player knows something happened
+        player.GetComponentInChildren<PlayerHealth>().HealPlayer(50);//give player back 50 health
 
         foreach (Collider c in colliders)
             c.enabled = false;//make uncollidable
