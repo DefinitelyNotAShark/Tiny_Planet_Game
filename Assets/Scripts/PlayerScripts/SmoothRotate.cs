@@ -14,6 +14,10 @@ public class SmoothRotate : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         float heading = Mathf.Atan2(horizontal, vertical) * Mathf.Rad2Deg;
 
-        transform.localEulerAngles = new Vector3(0, heading, 0);
+        //only rotate if you're getting input. That way the player doesn't turn to face front any time your fingers leave the keys
+        if (Mathf.Abs(horizontal) > 0 || Mathf.Abs(vertical) > 0)
+        {
+            transform.localEulerAngles = new Vector3(0, heading, 0);
+        }
     }
 }

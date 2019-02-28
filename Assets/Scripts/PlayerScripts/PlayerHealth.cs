@@ -48,6 +48,11 @@ public class PlayerHealth : MonoBehaviour
         {
             StartCoroutine(PlayerInvincibility());
             currentHealth -= amount;//take away our health
+
+            //health can't be less than 0
+            if (currentHealth < 0)
+                currentHealth = 0;
+
             ChangeHealthColor();
         }
     }
@@ -55,6 +60,11 @@ public class PlayerHealth : MonoBehaviour
     public void HealPlayer(int amount)
     {
         currentHealth += amount;
+
+        //can't be more than 100. you max out at 100;
+        if (currentHealth > 100)
+            currentHealth = 100;
+
         ChangeHealthColor();
     }
 
