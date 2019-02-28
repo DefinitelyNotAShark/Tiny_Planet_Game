@@ -4,22 +4,35 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip shoot;
+
+    [SerializeField]
+    private float shootVolume;
+
     [Header("Bullet Settings")]
     [SerializeField]
     private GameObject bulletPrefab;
+
     [SerializeField]
     private Transform bulletMuzzle;
+
     [SerializeField]
     private float bulletSpeed, bulletLifetime, shotDelay=0f, shotCooldown=0.5f;
+
     [Header("Shotgun Spread Settings")]
     [SerializeField]
     private int bulletCount;
+
     [SerializeField]
     private float spreadAngle;
+
     List<Quaternion> pellets;
 
     private GameObject bulletInstance;
     private Animator anim;
+    private AudioSource audio;
 
     private bool coroutineStarted;
 
@@ -30,6 +43,7 @@ public class PlayerShoot : MonoBehaviour
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
+        audio = GetComponent<AudioSource>();
     }
 
     public void AddBullet()//allows us to shoot another bullet in our gun at one time
@@ -55,7 +69,8 @@ public class PlayerShoot : MonoBehaviour
 
     void Shoot()
     {
-        //AUDIO shooting sound
+        audio.PlayOneShot(shoot, shootVolume);
+
         for(int i = 0; i < pellets.Count; i++)
         {
             pellets[i] = Random.rotation;

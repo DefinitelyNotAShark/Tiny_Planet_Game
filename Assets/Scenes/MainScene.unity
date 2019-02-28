@@ -1580,6 +1580,16 @@ Prefab:
       propertyPath: fallVolume
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114434328798790502, guid: a5137a2877e8c78419e3e6f2cf988c6a,
+        type: 2}
+      propertyPath: shoot
+      value: 
+      objectReference: {fileID: 8300000, guid: b444806393c67304696b70ffafbfd51f, type: 3}
+    - target: {fileID: 114434328798790502, guid: a5137a2877e8c78419e3e6f2cf988c6a,
+        type: 2}
+      propertyPath: shootVolume
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5137a2877e8c78419e3e6f2cf988c6a, type: 2}
   m_IsPrefabAsset: 0
