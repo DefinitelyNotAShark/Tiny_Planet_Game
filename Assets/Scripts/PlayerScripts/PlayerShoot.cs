@@ -32,6 +32,12 @@ public class PlayerShoot : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
     }
 
+    public void AddBullet()//allows us to shoot another bullet in our gun at one time
+    {
+        Quaternion pellet = new Quaternion();
+        pellets.Add(pellet);
+    }
+
     void Update ()
     {
         if (Input.GetButtonDown("Shoot"))
@@ -50,15 +56,14 @@ public class PlayerShoot : MonoBehaviour
     void Shoot()
     {
         //AUDIO shooting sound
-        int i = 0;
-        foreach (Quaternion quat in pellets)
+        for(int i = 0; i < pellets.Count; i++)
         {
             pellets[i] = Random.rotation;
+
             bulletInstance = Instantiate(bulletPrefab, bulletMuzzle.position, bulletMuzzle.rotation);
             bulletInstance.transform.rotation = Quaternion.RotateTowards(bulletInstance.transform.rotation, pellets[i], spreadAngle);
             bulletInstance.AddComponent<MoveBullet>().speed = bulletSpeed;
             bulletInstance.GetComponent<MoveBullet>().lifetime = bulletLifetime;
-            i++;
         }
     }
 

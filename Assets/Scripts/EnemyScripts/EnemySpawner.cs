@@ -40,12 +40,18 @@ public class EnemySpawner : MonoBehaviour
     private WaveAlert waveUI;
 
     [SerializeField]
+    private GunUpgradedAlert gunUI;
+
+    [SerializeField]
     private SpawnHealth healthSpawnScript;
 
     private GameObject objectInstance;
+    private PlayerShoot shootScript;//allows me to change the gun type in this script
+    private bool isStart = true;
 
     void Start()
     {
+        shootScript = playerTransform.GetComponent<PlayerShoot>();
         enemiesOnScreen = 0;
         StartCoroutine(StartSpawning());//start the spawning loop
     }
@@ -56,12 +62,23 @@ public class EnemySpawner : MonoBehaviour
         {
             if (enemiesOnScreen == 0)
             {
+                //gun upgrades
+                if (!isStart)//only do this stuff on the next waves, not on the first one
+                {
+                    shootScript.AddBullet();//add one bullet to the gun to shoot at a time. start with 0 and get one right as you start
+                    StartCoroutine(gunUI.StartAlert());
+                    numberOfEnemiesInWave++;//add another enemy to the next wave each time
+                }
+
+                isStart = false;
+
                 yield return new WaitForSeconds(timeBetweenWaves);
+
                 StartCoroutine(waveUI.StartAlert());
 
                 for (int i = 0; i < numberOfEnemiesInWave; i++)
                 {
-                    yield return new WaitForSeconds(ChooseARandomSpawnTime());//waits a random time that it chooses from our min to our max
+                    //yield return new WaitForSeconds(ChooseARandomSpawnTime());//waits a random time that it chooses from our min to our max
                     Spawn();
                     enemiesOnScreen++;
                 }
@@ -70,7 +87,6 @@ public class EnemySpawner : MonoBehaviour
             }
 
             yield return new WaitForEndOfFrame();//lil pause
-            Debug.Log("Enemies Left: " + enemiesOnScreen.ToString());
         }
     }
 
