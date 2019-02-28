@@ -38,4 +38,12 @@ public class MainMenuNav : MonoBehaviour
         audioSource.PlayOneShot(buttonClick, buttonClickVolume);
         SceneManager.LoadScene("MainScene");
     }
+    public void Quit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 }

@@ -26,7 +26,7 @@ public class PlayerShoot : MonoBehaviour
     private int bulletCount;
 
     [SerializeField]
-    private float spreadAngle;
+    private float spreadAngle=1f, spreadIncrement=2f;
 
     List<Quaternion> pellets;
 
@@ -50,6 +50,7 @@ public class PlayerShoot : MonoBehaviour
     {
         Quaternion pellet = new Quaternion();
         pellets.Add(pellet);
+        spreadAngle += spreadIncrement;
     }
 
     void Update ()

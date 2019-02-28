@@ -28,6 +28,6 @@ public class EnemyRemainingCounter : MonoBehaviour
             enemiesRemaining = 0;//don't want to show negative numbers that would make people confused;
         }
 
-        text.text = enemiesRemaining + " / " + enemiesSpawned;
+        text.text = enemiesRemaining + " / " + enemiesSpawned + " :Enemies Killed";
     }
 }
