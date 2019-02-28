@@ -26,7 +26,6 @@ public class PlayerHealth : MonoBehaviour
 
     private bool playerIsInvincible;
 
-    private AudioSource audio;
     private Slider Slider;
     private Renderer[] renderers;
 
@@ -34,7 +33,6 @@ public class PlayerHealth : MonoBehaviour
     {
         Slider = GetComponentInChildren<Slider>();
         renderers = player.GetComponentsInChildren<Renderer>();
-        audio = GetComponentInParent<AudioSource>();
 
         fullHealth = 100;
         currentHealth = fullHealth;
