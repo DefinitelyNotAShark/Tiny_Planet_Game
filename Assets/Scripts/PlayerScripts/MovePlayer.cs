@@ -10,11 +10,17 @@ public class MovePlayer : MonoBehaviour
     [SerializeField]
     private float moveSpeed;
 
-    private ParticleSystem fallParticles;
+    [SerializeField]
+    private float fallVolume;
 
+    [SerializeField]
+    private AudioClip fallSound;
+
+    private ParticleSystem fallParticles;
     private Vector3 moveDirection;
     private Rigidbody rigidbody;
     private Animator anim;
+    private AudioSource audio;
 
     private float horizontal;
     private float vertical;
@@ -26,6 +32,7 @@ public class MovePlayer : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
         fallParticles = GetComponentInChildren<ParticleSystem>();
+        audio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -52,6 +59,7 @@ public class MovePlayer : MonoBehaviour
         if (!playerHasFallenToPlanet)
         {
             fallParticles.Play();
+            audio.PlayOneShot(fallSound, fallVolume);
             playerHasFallenToPlanet = true;//only plays once
         }
     }
