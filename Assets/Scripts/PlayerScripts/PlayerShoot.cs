@@ -6,10 +6,10 @@ public class PlayerShoot : MonoBehaviour
 {
     [Header("Audio")]
     [SerializeField]
-    private AudioClip shoot;
+    private AudioClip shoot, pop;
 
     [SerializeField]
-    private float shootVolume;
+    private float shootVolume, popVolume;
 
     [Header("Bullet Settings")]
     [SerializeField]
@@ -70,6 +70,7 @@ public class PlayerShoot : MonoBehaviour
 
     void Shoot()
     {
+        audio.PlayOneShot(pop, popVolume);
         audio.PlayOneShot(shoot, shootVolume);
 
         for(int i = 0; i < pellets.Count; i++)
