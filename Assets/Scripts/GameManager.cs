@@ -7,11 +7,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    private AudioClip happyAlert, enemyDeath;
-
-    [SerializeField]
-    private float happyAlertVolume, enemyDeathVolume;
 
     [HideInInspector]
     public int EnemiesOnScreen { get; private set; }
@@ -119,6 +114,6 @@ public class GameManager : MonoBehaviour
     public void DecreaseEnemyAmount()
     {
         EnemiesOnScreen--;
-        audio.PlayOneShot(enemyDeath, enemyDeathVolume);//play enemy death sound
+        audio.Play() ;//play enemy death sound
     }
 }
