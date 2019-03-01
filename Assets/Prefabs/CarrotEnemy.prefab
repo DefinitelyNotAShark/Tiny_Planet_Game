@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4561144613666780}
   - component: {fileID: 33267593369715018}
   - component: {fileID: 23172237556463722}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Blade3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4056639806056932}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: bLADEcntrl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4629357776894878}
   - component: {fileID: 95720238243382672}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CarrotSlicerModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4799037985378418}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RootCNTRL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 4690684326034032}
   - component: {fileID: 33178267009921600}
   - component: {fileID: 23595040211329938}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 135390407543672426}
   - component: {fileID: 114272394799709060}
   - component: {fileID: 135567848383316814}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CarrotEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 4057954051980204}
   - component: {fileID: 198716912520624298}
   - component: {fileID: 199483433426915412}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}

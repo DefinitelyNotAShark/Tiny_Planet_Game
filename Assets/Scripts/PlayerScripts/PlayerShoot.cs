@@ -29,7 +29,7 @@ public class PlayerShoot : MonoBehaviour
     private float spreadAngle=1f, spreadIncrement=2f;
 
     List<Quaternion> pellets;
-
+    public GameObject muzzlePrefab, hitPrefab;
     private GameObject bulletInstance;
     private Animator anim;
     private AudioSource audio;
@@ -81,6 +81,8 @@ public class PlayerShoot : MonoBehaviour
             bulletInstance.transform.rotation = Quaternion.RotateTowards(bulletInstance.transform.rotation, pellets[i], spreadAngle);
             bulletInstance.AddComponent<MoveBullet>().speed = bulletSpeed;
             bulletInstance.GetComponent<MoveBullet>().lifetime = bulletLifetime;
+            bulletInstance.GetComponent<MoveBullet>().muzzlePrefab = muzzlePrefab;
+            bulletInstance.GetComponent<MoveBullet>().hitPrefab = hitPrefab;
         }
     }
 

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4329238842667022}
   - component: {fileID: 33800270299920088}
   - component: {fileID: 23069769449146924}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Plus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 65866193910374748}
   - component: {fileID: 54543053198902140}
   - component: {fileID: 82073848594058374}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HealthPack 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4864919673984844}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ROOT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 4771713887330474}
   - component: {fileID: 198174058404896314}
   - component: {fileID: 199033015123693850}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Plus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4280455874576026}
   - component: {fileID: 95954196914348674}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4844202100139948}
   - component: {fileID: 198981517871210052}
   - component: {fileID: 199705720712099156}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
