@@ -6,6 +6,12 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip playerImpact;
+
+    [SerializeField]
+    private float playerImpactVolume;
+
+    [SerializeField]
     private Color fullHealthColor, zeroHealthColor, semiFullHealthColor;
 
     [SerializeField]
@@ -25,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
 
     private Slider Slider;
     private Renderer[] renderers;
-
+    private AudioSource audio;
 
 
     private int fullHealth;
@@ -35,6 +41,7 @@ public class PlayerHealth : MonoBehaviour
     {
         Slider = GetComponentInChildren<Slider>();
         renderers = player.GetComponentsInChildren<Renderer>();
+        audio = GetComponentInParent<AudioSource>();
 
         fullHealth = 100;
         currentHealth = fullHealth;
@@ -44,8 +51,11 @@ public class PlayerHealth : MonoBehaviour
 
     public void HurtPlayer(int amount)
     {
+        audio.PlayOneShot(playerImpact, playerImpactVolume);
+
         if (!playerIsInvincible)
         {
+            //AUDIO play a different sound for the player taking damage here
             StartCoroutine(PlayerInvincibility());
             currentHealth -= amount;//take away our health
 

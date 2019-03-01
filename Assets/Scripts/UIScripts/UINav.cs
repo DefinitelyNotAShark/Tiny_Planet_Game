@@ -10,18 +10,23 @@ public class UINav : MonoBehaviour
     [SerializeField]
     private GameObject pausePanel;
 
+    private AudioSource audio;
+
     private void Awake()
     {
+        audio = GetComponent<AudioSource>();
         isPaused = false;
         Time.timeScale = 1f;//just make sure the time is right on load
     }
     public void OnRestartClicked()
     {
+        audio.Play();
         SceneManager.LoadScene("MainScene");
     }
 
     public void OnMainMenuClicked()
     {
+        audio.Play();
         SceneManager.LoadScene("MainMenu");
     }
 

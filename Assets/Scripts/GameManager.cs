@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
                     //this is the stuff that doesn't max out at 10
                     enemySpawnScript.IncreaseSpeed();//make em faster
                     numberOfEnemiesInWave++;//add another enemy to the next wave each time
+                    healthSpawnScript.SpawnHealthPacks(GenerateRandomPoint());//put some health on the screen after enemies have spawned
                 }
 
                 isStart = false;
@@ -82,9 +83,6 @@ public class GameManager : MonoBehaviour
                     enemySpawnScript.Spawn(GenerateRandomPoint());
                     EnemiesOnScreen++;
                 }
-
-                //Put down a health pack after all enemies have been spawned for the wave
-                healthSpawnScript.SpawnHealthPacks(GenerateRandomPoint());//put some health on the screen after enemies have spawned
             }
 
             yield return new WaitForEndOfFrame();//lil pause
