@@ -17,6 +17,10 @@ public class MainMenuNav : MonoBehaviour
 
     private AudioSource audioSource;
 
+    private void Awake()
+    {
+        Time.timeScale = 1f;
+    }
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
