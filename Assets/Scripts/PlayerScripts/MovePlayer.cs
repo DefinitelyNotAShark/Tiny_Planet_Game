@@ -21,6 +21,7 @@ public class MovePlayer : MonoBehaviour
     private Rigidbody rigidbody;
     private Animator anim;
     private AudioSource audio;
+    private TrailRenderer[] trails;
 
     private float horizontal;
     private float vertical;
@@ -33,6 +34,10 @@ public class MovePlayer : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         fallParticles = GetComponentInChildren<ParticleSystem>();
         audio = GetComponent<AudioSource>();
+        trails = GetComponentsInChildren<TrailRenderer>();
+
+        foreach (TrailRenderer t in trails)
+            t.emitting = false;
     }
 
     void Update()
@@ -61,6 +66,9 @@ public class MovePlayer : MonoBehaviour
             fallParticles.Play();
             audio.PlayOneShot(fallSound, fallVolume);
             playerHasFallenToPlanet = true;//only plays once
+
+            foreach (TrailRenderer t in trails)
+                t.emitting = true;
         }
     }
 }

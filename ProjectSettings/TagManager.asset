@@ -7,6 +7,7 @@ TagManager:
   - Planet
   - Bullet
   - GameManager
+  - Trail
   layers:
   - Default
   - TransparentFX
