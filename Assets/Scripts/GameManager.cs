@@ -7,6 +7,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip happyAlert, enemyDeath;
+
+    [SerializeField]
+    private float happyAlertVolume, enemyDeathVolume;
+
     [HideInInspector]
     public int EnemiesOnScreen { get; private set; }
 
@@ -42,7 +48,7 @@ public class GameManager : MonoBehaviour
     {
         healthSpawnScript = GetComponentInChildren<SpawnHealth>();
         enemySpawnScript = GetComponentInChildren<EnemySpawner>();
-        audio = GetComponent<AudioSource>();
+        audio = GetComponentInChildren<AudioSource>();//get the audiosource on the enemyspawner script
         
         EnemiesOnScreen = 0;//starts off with no enemies on the screen
         StartCoroutine(StartGame());//start the spawning loop
@@ -75,6 +81,7 @@ public class GameManager : MonoBehaviour
                 //ALERT FOR NEW WAVE
                 yield return new WaitForSeconds(timeBetweenWaves);//the calm before the next wave
                 StartCoroutine(waveUI.StartAlert());//give the alert that there will be a new wave
+                //audio.PlayOneShot(happyAlert, happyAlertVolume);//play after a short delay so that you see it as soon as the UI is done fading in
 
                 //NEXT WAVE
                 waveCount++;
@@ -112,6 +119,6 @@ public class GameManager : MonoBehaviour
     public void DecreaseEnemyAmount()
     {
         EnemiesOnScreen--;
-        audio.Play();//play enemy death sound
+        audio.PlayOneShot(enemyDeath, enemyDeathVolume);//play enemy death sound
     }
 }
