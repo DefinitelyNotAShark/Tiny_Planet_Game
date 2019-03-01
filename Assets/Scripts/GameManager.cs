@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GunUpgradedAlert gunUI;
 
-
     [SerializeField]
     private PlayerShoot shootScript;//allows me to change the gun type in this script
 
@@ -37,12 +36,14 @@ public class GameManager : MonoBehaviour
 
     private bool isStart = true;
     private int waveCount = 1;//waves start at 1
+    private AudioSource audio;
 
     void Start ()
     {
         healthSpawnScript = GetComponentInChildren<SpawnHealth>();
         enemySpawnScript = GetComponentInChildren<EnemySpawner>();
-
+        audio = GetComponent<AudioSource>();
+        
         EnemiesOnScreen = 0;//starts off with no enemies on the screen
         StartCoroutine(StartGame());//start the spawning loop
     }
@@ -111,5 +112,6 @@ public class GameManager : MonoBehaviour
     public void DecreaseEnemyAmount()
     {
         EnemiesOnScreen--;
+        audio.Play();//play enemy death sound
     }
 }

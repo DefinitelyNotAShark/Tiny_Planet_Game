@@ -12,7 +12,6 @@ public class EnemyDetectColl : MonoBehaviour
     private Rigidbody rigidbody;
     private ParticleSystem hitParticles;
 
-
     private void Start()
     {     
         coroutineStarted = false;

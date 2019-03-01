@@ -33,9 +33,8 @@ public class HealthDetectColl : MonoBehaviour
 
         audio.Play();//play the get health sound so the player knows something happened
         player.GetComponentInChildren<PlayerHealth>().HealPlayer(50);//give player back 50 health
-
         foreach (Renderer r in renderers)
-            r.enabled = false;//make untouchable
+            r.enabled = false;//make unseeable
 
         foreach (Collider c in colliders)
             c.enabled = false;//make uncollidable
