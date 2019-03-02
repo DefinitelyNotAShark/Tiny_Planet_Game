@@ -24,6 +24,8 @@ public class EnemyDetectColl : MonoBehaviour
 
         rigidbody = GetComponent<Rigidbody>();
         hitParticles = GetComponentInChildren<ParticleSystem>();
+
+        
     }
 
     private void OnTriggerEnter(Collider other)

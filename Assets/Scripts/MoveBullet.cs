@@ -32,6 +32,7 @@ public class MoveBullet : MonoBehaviour
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
+
     //TODO: bullet instantly destroys itself, keep commented until fix
     private void OnCollisionEnter(Collision collision)
     {
