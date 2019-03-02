@@ -14,7 +14,7 @@ public class ImplosionSound : MonoBehaviour
 
     private IEnumerator implosionCoolDown()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.2f);
         audio.Play();
     }
 }
