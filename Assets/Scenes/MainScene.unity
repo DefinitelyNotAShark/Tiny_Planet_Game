@@ -412,8 +412,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030518, y: -0.000012279}
-  m_SizeDelta: {x: 924.2, y: 46.7}
+  m_AnchoredPosition: {x: -0.000030518, y: 0.000011921}
+  m_SizeDelta: {x: 924.2, y: 55.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &61157566
 MonoBehaviour:
@@ -436,7 +436,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7cb2912222469634ba17a77055919ea8, type: 3}
-    m_FontSize: 18
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -489,8 +489,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.025896, y: 215.6}
-  m_SizeDelta: {x: 924.2, y: 46.7}
+  m_AnchoredPosition: {x: -0.025896, y: 211.3}
+  m_SizeDelta: {x: 924.2, y: 55.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &62306510
 MonoBehaviour:
@@ -836,8 +836,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -123.76, y: 116.41}
-  m_SizeDelta: {x: 247.44, y: 55.93}
+  m_AnchoredPosition: {x: -123.7, y: 97}
+  m_SizeDelta: {x: 247.4, y: 41.465}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &225325220
 MonoBehaviour:
@@ -1378,6 +1378,12 @@ Prefab:
       propertyPath: enemyDeathVolume
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114363131789152658, guid: 7cc52b414ada7474eafb61d8c21669f5,
+        type: 2}
+      propertyPath: implosionPrefab
+      value: 
+      objectReference: {fileID: 1543044177809678, guid: 01ddedbc3ee4e4e41b497056ad80d5a6,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cc52b414ada7474eafb61d8c21669f5, type: 2}
   m_IsPrefabAsset: 0
@@ -1499,7 +1505,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9d739359b5c68094a8c7a4c32c725dee, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e641d7a6f89319747bc22d8c668598a4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.523
   m_Pitch: 1

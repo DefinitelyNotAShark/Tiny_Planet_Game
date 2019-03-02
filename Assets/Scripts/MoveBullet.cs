@@ -9,6 +9,7 @@ public class MoveBullet : MonoBehaviour
 
     private float elapsedTime;
     public GameObject muzzlePrefab, hitPrefab;
+    private GameObject hitFX;
     private void Awake()
     {
         if (muzzlePrefab != null)
@@ -40,7 +41,7 @@ public class MoveBullet : MonoBehaviour
         Vector3 pos = cont.point;
         if (hitPrefab != null)
         {
-            var hitFX = Instantiate(hitPrefab, pos, rot);
+            hitFX = Instantiate(hitPrefab, pos, rot);
             hitFX.transform.forward = gameObject.transform.forward;
         }
         Destroy(this.gameObject);

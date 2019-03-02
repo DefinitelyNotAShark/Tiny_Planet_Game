@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 199483433426915412}
   m_Layer: 12
   m_Name: Sparks
-  m_TagString: Untagged
+  m_TagString: Sparks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -353,6 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be7c9111b9c96c43b22e904eebf8a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  implosion: {fileID: 0}
 --- !u!114 &114851382915676706
 MonoBehaviour:
   m_ObjectHideFlags: 1

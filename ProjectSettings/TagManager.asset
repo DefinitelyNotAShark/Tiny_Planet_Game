@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - GameManager
   - Trail
+  - Implosion
+  - Sparks
   layers:
   - Default
   - TransparentFX

@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class EnemyDetectColl : MonoBehaviour
 {
+    [HideInInspector]
+    public GameObject implosion;
+
     private int damageAmount;
     private int damageCoolDown;
     private bool coroutineStarted;
     private bool enemyIsDead;
 
     private Rigidbody rigidbody;
+
     private ParticleSystem hitParticles;
 
     private void Start()
@@ -30,6 +34,13 @@ public class EnemyDetectColl : MonoBehaviour
             {
                 enemyIsDead = true;//set the enemy to be going through death
                 GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().DecreaseEnemyAmount();//decrease enemy amount
+
+                if (implosion != null)
+                {
+                    var implosionInstance = Instantiate(implosion, transform.position, Quaternion.identity);
+                    implosionInstance.transform.forward = gameObject.transform.forward;
+                }
+
                 Destroy(this.gameObject);
             }
         }

@@ -19,6 +19,10 @@ public class EnemySpawner : MonoBehaviour
     [Tooltip("The minimum distance the enemy can spawn to the player")]
     private float minDistanceMoveTowardsPlayer;
 
+    [SerializeField]
+    private GameObject implosionPrefab;
+
+
     private GameObject objectInstance;
     private PlayerShoot shootScript;//allows me to change the gun type in this script
 
@@ -35,6 +39,7 @@ public class EnemySpawner : MonoBehaviour
         objectInstance.AddComponent<EnemyMove>().playerTransform = playerTransform;
         objectInstance.GetComponent<EnemyMove>().minDistance = minDistanceMoveTowardsPlayer;
         objectInstance.GetComponent<EnemyMove>().enemySpeed = enemySpeed;
+        objectInstance.GetComponent<EnemyDetectColl>().implosion = implosionPrefab;
     }
 
     public void IncreaseSpeed()
