@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private PlayerShoot shootScript;//allows me to change the gun type in this script
 
+    [SerializeField]
+    private CameraShake cameraScript;
+
     private SpawnHealth healthSpawnScript;
     private EnemySpawner enemySpawnScript;
 
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
         audio = GetComponentInChildren<AudioSource>();//get the audiosource on the enemyspawner script
         
         EnemiesOnScreen = 0;//starts off with no enemies on the screen
+      
         StartCoroutine(StartGame());//start the spawning loop
     }
 
@@ -113,6 +117,7 @@ public class GameManager : MonoBehaviour
 
     public void DecreaseEnemyAmount()
     {
+        StartCoroutine(cameraScript.DoCameraShake(.2f));
         EnemiesOnScreen--;
         audio.Play() ;//play enemy death sound
     }
