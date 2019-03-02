@@ -28,6 +28,8 @@ public class MovePlayer : MonoBehaviour
 
     private bool playerHasFallenToPlanet;
 
+    private CameraShake shake;
+
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -38,6 +40,9 @@ public class MovePlayer : MonoBehaviour
 
         foreach (TrailRenderer t in trails)
             t.emitting = false;
+
+
+        shake = GetComponentInChildren<Camera>().GetComponent<CameraShake>();
     }
 
     void Update()
@@ -64,6 +69,8 @@ public class MovePlayer : MonoBehaviour
         if (!playerHasFallenToPlanet)
         {
             fallParticles.Play();
+            StartCoroutine(shake.DoCameraShake(.1f));
+
             audio.PlayOneShot(fallSound, fallVolume);
             playerHasFallenToPlanet = true;//only plays once
 
