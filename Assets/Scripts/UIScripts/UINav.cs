@@ -29,7 +29,14 @@ public class UINav : MonoBehaviour
         audio.Play();
         SceneManager.LoadScene("MainMenu");
     }
-
+    public void Quit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
     private void Update()
     {
         if (Input.GetButtonDown("Pause"))//if you press the button it toggles pause
