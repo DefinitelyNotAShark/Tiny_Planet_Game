@@ -242,6 +242,7 @@ MonoBehaviour:
   numberOfEnemiesInWave: 3
   timeBetweenWaves: 3
   planetRadius: 25
+  comboTime: 5
   waveUI: {fileID: 0}
   gunUI: {fileID: 0}
   shootScript: {fileID: 0}

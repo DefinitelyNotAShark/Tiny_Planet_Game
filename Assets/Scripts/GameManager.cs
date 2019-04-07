@@ -22,6 +22,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float planetRadius;
 
+    [Header("Points")]
+    [SerializeField]
+    [Tooltip("The amount of time that you have to kill another enemy for a combo. Doesn't change")]
+    private float comboTime;
+
+    [Tooltip("A counter for how many enemies were killed within the combo time. Multiplier increases with the count")]
+    private int comboCount;
+
     [Header("Scripts")]
     [SerializeField]
     private WaveAlert waveUI;
@@ -35,12 +43,16 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private CameraShake cameraScript;
 
+    [HideInInspector]
+    public int Points { get; set; }
+
     private SpawnHealth healthSpawnScript;
     private EnemySpawner enemySpawnScript;
+    private AudioSource audio;
 
     private bool isStart = true;
     private int waveCount = 1;//waves start at 1
-    private AudioSource audio;
+    private float timer;
 
     void Start ()
     {
@@ -49,8 +61,30 @@ public class GameManager : MonoBehaviour
         audio = GetComponentInChildren<AudioSource>();//get the audiosource on the enemyspawner script
         
         EnemiesOnScreen = 0;//starts off with no enemies on the screen
+        comboCount = 0;
       
         StartCoroutine(StartGame());//start the spawning loop
+    }
+
+
+    private void Update()
+    {
+        if (comboCount > 0)//if therre's a combo
+        {
+            if (timer < comboTime)//if the timer is still going
+            {
+                timer += Time.deltaTime;
+            }
+            else if (timer >= comboTime)//if we ran out of time to continue the combo
+            {
+                //RESET VALUES
+                comboCount = 0;
+                timer = 0;
+                Debug.Log("Combo ended");
+            }
+        }
+        if (comboCount > 0)
+            Debug.Log("Combo: " + comboCount);
     }
 
     private IEnumerator StartGame()
@@ -115,10 +149,14 @@ public class GameManager : MonoBehaviour
         return new Vector3(x, y, z);
     }
 
-    public void DecreaseEnemyAmount()
+    public void DecreaseEnemyAmount(int pointAmount)
     {
         StartCoroutine(cameraScript.DoCameraShake(.2f));
         EnemiesOnScreen--;
         audio.Play() ;//play enemy death sound
+
+        //COMBO STUFF
+        comboCount++;
+        Points += pointAmount * comboCount;
     }
 }

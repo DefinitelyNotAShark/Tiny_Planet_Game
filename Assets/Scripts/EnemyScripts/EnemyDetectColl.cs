@@ -15,6 +15,7 @@ public class EnemyDetectColl : MonoBehaviour
     private Rigidbody rigidbody;
 
     private ParticleSystem hitParticles;
+    private GameManager manager;
 
     private void Start()
     {     
@@ -23,19 +24,20 @@ public class EnemyDetectColl : MonoBehaviour
         damageCoolDown = 1;
 
         rigidbody = GetComponent<Rigidbody>();
-        hitParticles = GetComponentInChildren<ParticleSystem>();
-
-        
+        hitParticles = GetComponentInChildren<ParticleSystem>();      
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Bullet")//check for being shot
         {
+            manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();//decrease enemy amount
+
             if (!enemyIsDead)//if the enemy is not already going through death 
             {
+                manager.DecreaseEnemyAmount(1);//HACK program in a point amount later
                 enemyIsDead = true;//set the enemy to be going through death
-                GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().DecreaseEnemyAmount();//decrease enemy amount
+
 
                 if (implosion != null)
                 {
