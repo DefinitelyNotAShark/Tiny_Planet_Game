@@ -71,7 +71,8 @@ public class GameManager : MonoBehaviour
     {
         if (comboCount > 0)//if therre's a combo
         {
-            if (timer < comboTime)//if the timer is still going
+            if (tim
+                er < comboTime)//if the timer is still going
             {
                 timer += Time.deltaTime;
             }
@@ -158,5 +159,6 @@ public class GameManager : MonoBehaviour
         //COMBO STUFF
         comboCount++;
         Points += pointAmount * comboCount;
+        timer = 0;//give more time to kill more enemies
     }
 }
