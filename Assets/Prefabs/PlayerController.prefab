@@ -954,7 +954,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1556173527977812
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
@@ -963,6 +963,7 @@ GameObject:
   - component: {fileID: 20005962684770796}
   - component: {fileID: 81565056083327996}
   - component: {fileID: 114266315943012086}
+  - component: {fileID: 114228161398144918}
   m_Layer: 10
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1388,6 +1389,21 @@ GameObject:
   - component: {fileID: 4652311661366104}
   m_Layer: 10
   m_Name: BALL_IK 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1858364881113130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4444341338543122}
+  m_Layer: 10
+  m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2034,7 +2050,7 @@ Transform:
   m_LocalPosition: {x: 0.01, y: 51.9, z: 0.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4608568194254844}
+  - {fileID: 4444341338543122}
   - {fileID: 224559568350678306}
   - {fileID: 4914226635857230}
   - {fileID: 4834810947970454}
@@ -2266,6 +2282,20 @@ Transform:
   m_Father: {fileID: 4246668342521958}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4444341338543122
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1858364881113130}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4608568194254844}
+  m_Father: {fileID: 4277314875092010}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4452138464328594
 Transform:
   m_ObjectHideFlags: 1
@@ -2471,12 +2501,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1556173527977812}
-  m_LocalRotation: {x: 0.4878596, y: -0, z: -0, w: 0.8729221}
-  m_LocalPosition: {x: 0, y: 7.7299995, z: -5.2499995}
+  m_LocalRotation: {x: 0.44721362, y: 0.00000004352908, z: -0.000000021764542, w: 0.8944272}
+  m_LocalPosition: {x: 0, y: 20, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4621905400336460}
-  m_Father: {fileID: 4277314875092010}
+  m_Father: {fileID: 4444341338543122}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 58.4, y: 0, z: 0}
 --- !u!4 &4621905400336460
@@ -3163,9 +3193,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 80
+  near clip plane: 0.1
+  far clip plane: 5000
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -3736,6 +3766,42 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 0
   m_FillOrigin: 0
+--- !u!114 &114228161398144918
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1556173527977812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 0}
+  m_UpdateMethod: 2
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 2
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Cinemachine.CinemachineBrain+BrainEvent, Cinemachine, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Cinemachine.CinemachineBrain+VcamActivatedEvent, Cinemachine, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114245653276836180
 MonoBehaviour:
   m_ObjectHideFlags: 1
